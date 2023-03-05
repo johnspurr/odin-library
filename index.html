@@ -5,10 +5,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Library</title>
+  <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
 </head>
 <body>
-  <h1>Welcome to the Library!</h1>
+  <header>
+    <h1>The Library</h1>
+  </header>
+  <main>
+    <div class="modal-container hidden">
+      <div class="modal">
+        <div class="modal__header">
+          <h1 class="modal__title">Add Book</h1>
+          <img src="images/close.svg" class="modal__close">
+        </div>
+        <form id="book-form" name="book-form" class="book-form">
+          <div class="book-form__input">
+            <label for="title">Title</label>            
+            <input id="book-form__title" name="title" type="text" required>
+          </div>
+          <div class="book-form__input">
+            <label for="author">Author</label>            
+            <input name="author" type="text" required>
+          </div>
+          <div class="book-form__input">
+            <label for="pages">Pages</label>            
+            <input name="pages" type="number" required>
+          </div>
+          <div class="book-form__read">
+            <label for="read">Mark Read?</label>
+            <input class="checkbox" name="read" type="checkbox">
+          </div>
+          <input type="submit"></button>
+        </form>
+      </div>
+    </div>
+    <div class="book-container">
+      <div class="add-book">
+        <div class="add-book__title">Add Book</div>
+        <img class="add-book__icon" src="images/plus-thick.svg" alt="">
+      </div>
+    </div>
+  </main>
 </body>
+<script src="script.js"></script>
 </html>

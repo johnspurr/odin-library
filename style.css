@@ -1,0 +1,223 @@
+:root,
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #eee;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+}
+
+header {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  padding: 0.67em;
+  width: calc(100vw-0.67em * 2);
+  height: 60px;
+  z-index: 2;
+  box-shadow: 0px 0px 4px gray;
+}
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: 0.5rem;
+}
+
+.book-container {
+  width: calc(800px + 1.5rem);
+  display: grid; /* 1 */
+  grid-template-columns: repeat(auto-fill, 200px); /* 2 */
+  grid-gap: 0.5rem; /* 3 */
+  justify-content: center; /* 4 */
+}
+
+.book:nth-of-type(5n + 1) {
+  background-color: green;
+}
+
+.book:nth-of-type(5n + 2) {
+  background-color: darkslateblue;
+}
+
+.book:nth-of-type(5n + 3) {
+  background-color: darkred;
+}
+
+.book:nth-of-type(5n + 4) {
+  background-color: darkslategrey;
+}
+
+.book:nth-of-type(5n) {
+  background-color: saddlebrown;
+}
+
+.book {
+  color: lightgoldenrodyellow;
+  width: 200px;
+  aspect-ratio: 0.625;
+  display: grid;
+  padding-block: 2em;
+  grid-template-rows: min-content auto min-content;
+  gap: 0.5em;
+  justify-content: center;
+  box-shadow: 1px 1px 4px gray;
+}
+
+.book * {
+  text-align: center;
+}
+
+.book__title {
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.add-book__title {
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.5rem;
+}
+
+.book__author {
+  font-weight: bold;
+  align-self: end;
+}
+
+.book__pages {
+  align-self: end;
+}
+
+.add-book {
+  padding-block: 2em;
+  width: 200px;
+  aspect-ratio: 0.625;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px gray;
+  content: "";
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-rows: 1fr 1fr 1fr;
+  cursor: pointer;
+  user-select: none;
+}
+
+.add-book:hover {
+  background-color: #eaf5ff;
+}
+
+.add-book:active {
+  background-color: #daedfd;
+}
+
+.add-book__icon {
+  filter: contrast(1%);
+  height: 100px;
+}
+
+.add-book__title {
+  align-self: start;
+  color: #333;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 0.6);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.hidden {
+  visiblity: hidden;
+  opacity: 0;
+  transition: none;
+  z-index: -9999;
+  pointer-events: none;
+}
+
+.modal {
+  position: relative;
+  width: 250px;
+  opacity: 100%;
+  font-size: 16px;
+  background-color: #eee;
+}
+
+.modal__header {
+  background-color: white;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.book-form {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #eee;
+  z-index: 999;
+}
+
+.modal__title {
+  font-size: 24px;
+  text-align: left;
+}
+
+.book-form__read {
+  display: grid;
+  grid-template-columns: max-content auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: rgb(42, 190, 22);
+  border: 0px;
+  border-radius: 2px;
+  font-weight: bold;
+  color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+input[type="submit"]:active {
+  background-color: rgb(36, 179, 17);
+}
+
+.checkbox {
+  cursor: pointer;
+  justify-self: left;
+}
+
+.modal__close {
+  position: absolute;
+  height: 1.5rem;
+  top: 0.2rem;
+  right: 0.2rem;
+  cursor: pointer;
+}
