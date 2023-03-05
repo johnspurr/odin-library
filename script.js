@@ -25,17 +25,38 @@ class Book {
   }
 }
 
-function addBookToLibrary(book) {
-  const bookNode = createBookNode(book);
-  bookContainer.insertBefore(bookNode, bookContainer.lastElementChild);
+function addBookToLibrary(book, createElement) {
   myLibrary.push(book);
+
+  renderLibrary();
 }
 
-function createBookNode(book) {
+function renderLibrary() {
+  const addBook = document.querySelector(".add-book");
+  let allBookNodes = [];
+  for (const [index, book] of myLibrary.entries()) {
+    const bookNode = createBookNode(book, index);
+    allBookNodes.push(bookNode);
+  }
+  bookContainer.replaceChildren(...allBookNodes, addBook);
+}
+
+{/* <img src="images/close.svg" class="modal__close"> */}
+function createBookNode(book, index) {
   const bookNode = document.createElement("div");
   bookNode.className = "book"
 
-  bookNode.dataset.index = myLibrary.length;
+  bookNode.dataset.index = index ?? myLibrary.length;
+
+  const closeNode = document.createElement("img");
+  closeNode.className = "book__remove";
+  closeNode.src = "images/close.svg";
+  closeNode.addEventListener("click", event => {
+    const book = event.target.parentElement;
+    myLibrary.splice(book.dataset.index, 1);
+    renderLibrary();
+  })
+  bookNode.appendChild(closeNode);
 
   bookNode.dataset.title = book.title;
   const titleNode = createDivWithClassAndText("book__title", book.title);
@@ -99,7 +120,7 @@ document.querySelector("#book-form").addEventListener("submit", event => {
   const form = event.target;
   const formData = new FormData(form);
   const book = Book.fromFormData(formData);
-  addBookToLibrary(book);
+  addBookToLibrary(book, true);
   form.reset();
   document.querySelector(".modal-container").classList.toggle("hidden");
   lastFocus.focus();

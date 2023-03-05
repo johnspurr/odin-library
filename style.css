@@ -264,10 +264,15 @@ input[type="submit"]:active {
   justify-self: left;
 }
 
-.modal__close {
+.modal__close,
+.book__remove {
   position: absolute;
   height: 1.5rem;
   top: 0.2rem;
   right: 0.2rem;
   cursor: pointer;
+}
+
+.book__remove {
+  filter: invert(96%) sepia(9%) saturate(720%) hue-rotate(3deg) brightness(105%) contrast(96%);
 }
