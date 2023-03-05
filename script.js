@@ -19,6 +19,10 @@ class Book {
 
     return new this(title, author, pages, read);
   }
+
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
 
 function addBookToLibrary(book) {
@@ -46,6 +50,17 @@ function createBookNode(book) {
   bookNode.appendChild(pagesNode);
 
   bookNode.dataset.read = book.read;
+  const readNode = createDivWithClassAndText("book__read", "");
+  if (book.read) {
+    readNode.classList.toggle("read");
+  }
+  readNode.addEventListener("click", event => {
+    readNode.classList.toggle("read");
+    const book = event.target.parentElement;
+    myLibrary[book.dataset.index].toggleRead();
+  })
+  bookNode.appendChild(readNode);
+
   return bookNode;
 }
 

@@ -61,6 +61,7 @@ main {
 }
 
 .book {
+  position: relative;
   color: lightgoldenrodyellow;
   width: 200px;
   aspect-ratio: 0.625;
@@ -70,6 +71,11 @@ main {
   gap: 0.5em;
   justify-content: center;
   box-shadow: 1px 1px 4px gray;
+}
+
+.read:last-child()::after {
+  content: "READ";
+  height: 10px;
 }
 
 .book * {
@@ -96,6 +102,50 @@ main {
 
 .book__pages {
   align-self: end;
+}
+
+.book__read {
+  position: absolute;
+  display: flex;
+  content: "MARK READ?";
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  font-size: 36px;
+  top: calc(50% - 1.5rem);
+  left: 25%;
+  color: rgb(218, 236, 236);
+  transform: rotate(-10deg);
+  /* padding-block: 0.25rem;
+  padding-inline: 0.5rem; */
+  width: 50%;
+  height: 3.5rem;
+  user-select: none;;
+}
+
+.book__read.read {  
+  border: 4px solid rgb(218, 236, 236);
+}
+
+.book__read::before {
+  content: "UNREAD";
+  font-size: 24px;
+}
+
+.book__read:hover::before {
+  content: "Mark Read?";
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.book__read.read::before {
+  content: "READ"
+}
+
+.book__read.read:hover::before {
+  content: "Mark Unread?";
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .add-book {
